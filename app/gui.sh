@@ -7,6 +7,7 @@ btnX=()
 btnY=()
 btnL=()
 btnI=0
+btnCb=()
 
 # Color por defecto de los textbox
 txtColor=(7 0)
@@ -15,6 +16,7 @@ txtX=()
 txtY=()
 txtL=()
 txtI=0
+txtValue=()
 
 
 # Define el color de los botones
@@ -31,6 +33,7 @@ function button {
 	btnX+=($2)
 	btnY+=($3)
 	btnL+=(${#label})
+	btnCb+=$4
 
 	defaultColor
 }
@@ -58,17 +61,20 @@ function textbox {
 function loadForm {
 	cat form/$1.form
 	source ./form/$1.sh
+	source ./form/$1_cb.sh
 }
 
+# Va al primer textbox y lo borra
 function firstText {
 	fontColor ${txtColor[0]} ${txtColor[1]}
 	goto ${txtX[0]} ${txtY[0]}
 	for i in $(seq ${txtL[0]}); do echo -n " "; done
 	goto ${txtX[0]} ${txtY[0]}
-	read -n ${txtL[0]}
+	read -n ${txtL[0]} -e txtValue[0]
 	nextText
 }
 
+# Va al siguiente textbox y lo borra
 function nextText {
 	txtI=$(num++ $txtI)
 	if test $txtI -lt ${#txtX[@]}; then
@@ -76,7 +82,7 @@ function nextText {
 		goto ${txtX[$txtI]} ${txtY[$txtI]}
 		for i in $(seq ${txtL[0]}); do echo -n " "; done
 		goto ${txtX[$txtI]} ${txtY[$txtI]}
-		read -n ${txtL[$txtI]}
+		read -n ${txtL[$txtI]} -e txtValue[$txtI]
 		nextText
 	else
 		txtI=$(num-- $txtI)

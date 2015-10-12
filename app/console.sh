@@ -20,3 +20,10 @@ function defaultColor {
 function goto {
 	tput cup $1 $2
 }
+
+# Leer tecla
+function read_key {
+	stty -echo
+	read key
+	stty echo
+}

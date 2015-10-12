@@ -10,5 +10,4 @@ clear
 loadForm index
 firstText
 
-goto 50 50
 read
