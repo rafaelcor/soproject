@@ -28,9 +28,9 @@ function button {
 	local label="<"$1">"
 	echo -n $label
 
-	btnX+=$2
-	btnY+=$3
-	btnL+=${#label}
+	btnX+=($2)
+	btnY+=($3)
+	btnL+=(${#label})
 
 	defaultColor
 }
@@ -47,15 +47,38 @@ function textbox {
 	local len=0
 	for i in $(seq $1); do echo -n " "; local len=$(expr $len + 1); done
 
-	txtX+=$2
-	txtY+=$3
-	txtL+=$len
+	txtX+=($2)
+	txtY+=($3)
+	txtL+=($len)
 	
 	defaultColor
 }
 
 # Carga un form
 function loadForm {
-	cat form/$1
+	cat form/$1.form
 	source ./form/$1.sh
+}
+
+function firstText {
+	fontColor ${txtColor[0]} ${txtColor[1]}
+	goto ${txtX[0]} ${txtY[0]}
+	for i in $(seq ${txtL[0]}); do echo -n " "; done
+	goto ${txtX[0]} ${txtY[0]}
+	read -n ${txtL[0]}
+	nextText
+}
+
+function nextText {
+	txtI=$(num++ $txtI)
+	if test $txtI -lt ${#txtX[@]}; then
+		fontColor ${txtColor[0]} ${txtColor[1]}
+		goto ${txtX[$txtI]} ${txtY[$txtI]}
+		for i in $(seq ${txtL[0]}); do echo -n " "; done
+		goto ${txtX[$txtI]} ${txtY[$txtI]}
+		read -n ${txtL[$txtI]}
+		nextText
+	else
+		txtI=$(num-- $txtI)
+	fi
 }
