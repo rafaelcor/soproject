@@ -10,4 +10,6 @@ clear
 loadForm index
 firstText
 
+firstButton
+
 read

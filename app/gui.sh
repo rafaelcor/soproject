@@ -3,20 +3,20 @@
 # Color por defecto de los botones
 btnColor=(1 7 2 1)
 # Arrays que almacenan la posicion de los botones y su tamaño
-btnX=()
-btnY=()
-btnL=()
-btnI=0
-btnCb=()
+btnX=() 	# posicion en X
+btnY=() 	# posicion en y
+btnT=() 	# texto del boton
+btnI=0 		# indice del boton sleeccionado actual
+btnCb=() 	# callbacks de los botones
 
 # Color por defecto de los textbox
 txtColor=(7 0)
 # Arrays que almacenan la posicion de los textbox y su tamaño
-txtX=()
-txtY=()
-txtL=()
-txtI=0
-txtValue=()
+txtX=() 	# pos en x
+txtY=() 	# pos en y
+txtL=() 	# longitud del textobx (limite)
+txtI=0 		# indice del boton seleccionado actual
+txtValue=() 	# valor almacenado en el textbox
 
 
 # Define el color de los botones
@@ -32,8 +32,8 @@ function button {
 
 	btnX+=($2)
 	btnY+=($3)
-	btnL+=(${#label})
-	btnCb+=$4
+	btnT+=($label)
+	btnCb+=($4)
 
 	defaultColor
 }
@@ -87,4 +87,12 @@ function nextText {
 	else
 		txtI=$(num-- $txtI)
 	fi
+}
+
+# Va al primer boton
+function firstButton {
+	fontColor ${btnColor[2]} ${btnColor[3]}
+	goto ${btnX[0]} ${btnY[0]}
+	echo -n ${btnT[0]}
+	defaultColor
 }
