@@ -11,5 +11,7 @@ loadForm index
 firstText
 
 firstButton
+txtI=0
+firstText
 
 read

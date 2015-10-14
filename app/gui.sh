@@ -96,3 +96,39 @@ function firstButton {
 	echo -n ${btnT[0]}
 	defaultColor
 }
+
+# Va al siguiente boton
+function nextButton {
+	btnI=$(num++ $btnI)
+	if test $btnI -lt ${#btnX[@]}; then
+		local anterior=$(num-- $btnI)
+		fontColor ${btnColor[0]} ${btnColor[1]}
+		goto ${btnX[$anterior]} ${btnY[$anterior]}
+		echo -n ${btnT[$anterior]}
+
+		fontColor ${btnColor[2]} ${btnColor[3]}
+		goto ${btnX[$btnI]} ${btnY[$btnI]}
+		echo -n ${btnT[$btnI]}
+		#nextButton
+	else
+		btnI=$(num-- $btnI)
+	fi
+}
+
+# Va al boton anterior
+function backButton {
+	btnI=$(num-- $btnI)
+	if test $btnI -ge 0; then
+		local anterior=$(num++ $btnI)
+		fontColor ${btnColor[0]} ${btnColor[1]}
+		goto ${btnX[$anterior]} ${btnY[$anterior]}
+		echo -n ${btnT[$anterior]}
+
+		fontColor ${btnColor[2]} ${btnColor[3]}
+		goto ${btnX[$btnI]} ${btnY[$btnI]}
+		echo -n ${btnT[$btnI]}
+		#nextButton
+	else
+		btnI=$(num++ $btnI)
+	fi
+}
