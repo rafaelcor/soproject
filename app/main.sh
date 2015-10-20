@@ -8,10 +8,8 @@ defaultColor
 clear
 
 loadForm index
-firstText
 
 firstButton
-txtI=0
-firstText
+controlButton s w
 
 read

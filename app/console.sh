@@ -24,6 +24,6 @@ function goto {
 # Leer tecla
 function read_key {
 	stty -echo
-	read key
+	read -n 1 key
 	stty echo
 }

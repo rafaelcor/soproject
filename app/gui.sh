@@ -26,9 +26,9 @@ function defBtnColor {
 # Crea un nuevo boton
 function button {
 	goto $2 $3
-	fontColor ${btnColor[0]} ${btnColor[1]}	
+	fontColor ${btnColor[0]} ${btnColor[1]}			
 	local label="<"$1">"
-	echo -n $label
+	echo -n $label | sed "s/_/ /g"
 
 	btnX+=($2)
 	btnY+=($3)
@@ -93,7 +93,7 @@ function nextText {
 function firstButton {
 	fontColor ${btnColor[2]} ${btnColor[3]}
 	goto ${btnX[0]} ${btnY[0]}
-	echo -n ${btnT[0]}
+	echo -n ${btnT[0]} | sed "s/_/ /g"
 	defaultColor
 }
 
@@ -104,11 +104,13 @@ function nextButton {
 		local anterior=$(num-- $btnI)
 		fontColor ${btnColor[0]} ${btnColor[1]}
 		goto ${btnX[$anterior]} ${btnY[$anterior]}
-		echo -n ${btnT[$anterior]}
+		#echo -n ${btnT[$anterior]}
+		echo -n ${btnT[$anterior]} | sed "s/_/ /g"
 
 		fontColor ${btnColor[2]} ${btnColor[3]}
 		goto ${btnX[$btnI]} ${btnY[$btnI]}
-		echo -n ${btnT[$btnI]}
+		#echo -n ${btnT[$btnI]}
+		echo -n ${btnT[$btnI]} | sed "s/_/ /g"		
 		#nextButton
 	else
 		btnI=$(num-- $btnI)
@@ -122,13 +124,25 @@ function backButton {
 		local anterior=$(num++ $btnI)
 		fontColor ${btnColor[0]} ${btnColor[1]}
 		goto ${btnX[$anterior]} ${btnY[$anterior]}
-		echo -n ${btnT[$anterior]}
+		#echo -n ${btnT[$anterior]}
+		echo -n ${btnT[$anterior]} | sed "s/_/ /g"
 
 		fontColor ${btnColor[2]} ${btnColor[3]}
 		goto ${btnX[$btnI]} ${btnY[$btnI]}
-		echo -n ${btnT[$btnI]}
+		#echo -n ${btnT[$btnI]}
+		echo -n ${btnT[$btnI]} | sed "s/_/ /g"
 		#nextButton
 	else
 		btnI=$(num++ $btnI)
 	fi
+}
+
+function controlButton {	
+	key="a"
+	while test $key != ""; do
+		read_key
+		if test $key = $1; then nextButton; fi
+		if test $key = $2; then backButton; fi
+	done
+	echo FUNCIONA
 }
