@@ -25,5 +25,7 @@ function goto {
 function read_key {
 	stty -echo
 	read -n 1 key
+	key=_$key
 	stty echo
+	#echo $key
 }

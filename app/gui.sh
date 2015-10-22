@@ -139,10 +139,11 @@ function backButton {
 
 function controlButton {	
 	key="a"
-	while test $key != ""; do
+	while test $key != "_"; do
 		read_key
-		if test $key = $1; then nextButton; fi
-		if test $key = $2; then backButton; fi
+		if test $key = _$1; then nextButton; fi
+		if test $key = _$2; then backButton; fi
 	done
-	echo FUNCIONA
+	#echo FUNCIONA
+	${btnCb[$btnI]}
 }

@@ -2,6 +2,20 @@
 
 #function aceptar_cb {}
 
-function volver_cb {
-	firstText
+function userA_cb {
+	clear
+	echo USUARIO
+	exit
+}
+
+function adminA_cb {
+	clear
+	echo ADMINISTRADOR
+	exit
+}
+
+function salir_cb {
+	clear
+	echo Usted salio :D	
+	exit
 }
