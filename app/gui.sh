@@ -66,6 +66,7 @@ function loadForm {
 
 # Va al primer textbox y lo borra
 function firstText {
+	txtI=0
 	fontColor ${txtColor[0]} ${txtColor[1]}
 	goto ${txtX[0]} ${txtY[0]}
 	for i in $(seq ${txtL[0]}); do echo -n " "; done
@@ -80,7 +81,7 @@ function nextText {
 	if test $txtI -lt ${#txtX[@]}; then
 		fontColor ${txtColor[0]} ${txtColor[1]}
 		goto ${txtX[$txtI]} ${txtY[$txtI]}
-		for i in $(seq ${txtL[0]}); do echo -n " "; done
+		for i in $(seq ${txtL[$txtI]}); do echo -n " "; done
 		goto ${txtX[$txtI]} ${txtY[$txtI]}
 		read -n ${txtL[$txtI]} -e txtValue[$txtI]
 		nextText

@@ -1,5 +1,5 @@
 #!/bin/bash
 
-# Previene que el programa se ejecute con "sh" el cual es inzapaz de usar "source" ejecutandolo con "bash" quien si lo soporta
+# Ejecuta el programa con "bash", ya q "sh" no soporta el comando q necesitabamos "source"
 cd app
 bash main.sh
