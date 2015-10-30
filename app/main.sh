@@ -13,12 +13,14 @@ firstText
 
 firstButton
 while test 1=1; do #while true-sama
-	if test ${txtValue[$txtI]} -eq ${txtValue[$txtI]} 2>/dev/null; then
+	if test ${txtValue[$txtI-1]} -eq ${txtValue[$txtI-1]} 2>/dev/null; then
 		controlButton s w
 	else
 		firstText
+		
 	fi
 done
 
 goto 80 80
-read -n 1 
+read -n 1
+
