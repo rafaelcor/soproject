@@ -7,7 +7,12 @@ function reingresar_cb {
 }
 
 function ingresar_cb {
-	echo
+	checkLogin ${txtValue[$txtI-1]} ${txtValue[$txtI]}
+	if test $loginReturn -eq 1;then
+		echo "Correcto!"
+	else
+		echo "Incorrecto!"
+	fi
 }
 
 function salir_cb {
