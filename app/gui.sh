@@ -1,23 +1,26 @@
 #!/bin/bash
 
-# Color por defecto de los botones
-btnColor=(1 7 2 1)
-# Arrays que almacenan la posicion de los botones y su tamaño
-btnX=() 	# posicion en X
-btnY=() 	# posicion en y
-btnT=() 	# texto del boton
-btnI=0 		# indice del boton sleeccionado actual
-btnCb=() 	# callbacks de los botones
+function resetValues {
+	# Color por defecto de los botones
+	btnColor=(1 7 2 1)
+	# Arrays que almacenan la posicion de los botones y su tamaño
+	btnX=() 	# posicion en X
+	btnY=() 	# posicion en y
+	btnT=() 	# texto del boton
+	btnI=0 		# indice del boton sleeccionado actual
+	btnCb=() 	# callbacks de los botones
 
-# Color por defecto de los textbox
-txtColor=(7 0)
-# Arrays que almacenan la posicion de los textbox y su tamaño
-txtX=() 	# pos en x
-txtY=() 	# pos en y
-txtL=() 	# longitud del textobx (limite)
-txtI=0 		# indice del boton seleccionado actual
-txtValue=() 	# valor almacenado en el textbox
+	# Color por defecto de los textbox
+	txtColor=(7 0)
+	# Arrays que almacenan la posicion de los textbox y su tamaño
+	txtX=() 	# pos en x
+	txtY=() 	# pos en y
+	txtL=() 	# longitud del textobx (limite)
+	txtI=0 		# indice del boton seleccionado actual
+	txtValue=() 	# valor almacenado en el textbox
+}
 
+resetValues
 
 # Define el color de los botones
 function defBtnColor {
@@ -59,9 +62,11 @@ function textbox {
 
 # Carga un form
 function loadForm {
+	resetValues
 	cat form/$1.form
 	source ./form/$1.sh
 	source ./form/$1_cb.sh
+	#firstButton
 }
 
 # Va al primer textbox y lo borra

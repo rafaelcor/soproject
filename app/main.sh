@@ -12,12 +12,12 @@ loadForm index
 firstText
 
 firstButton
-while test 1=1; do #while true-sama
-	if test ${txtValue[$txtI-1]} -eq ${txtValue[$txtI-1]} 2>/dev/null; then
+c=1
+while test $c=1; do #while true-sama
+	if test ${txtValue[$(num-- $txtI)]} -eq ${txtValue[$(num-- $txtI)]} 2>/dev/null; then
 		controlButton s w
 	else
 		firstText
-		
 	fi
 done
 
