@@ -8,14 +8,18 @@ function reingresar_cb {
 
 function ingresar_cb {
 	if test $(checkLogin ${txtValue[$txtI-1]} ${txtValue[$txtI]}) -eq 1;then
-		echo "Correcto!"
+		#if correct
+		userName=${txtValue[$txtI-1]}
 		defTermColor 4 7
 		defaultColor
 		clear
 		loadForm logged
 	else
-		echo "Incorrecto!"
+		echo
+		#if not correct
+		
 	fi
+	#end if
 }
 
 function salir_cb {
