@@ -163,7 +163,10 @@ function controlButton {
 function errorMsg {
 	goto $2 $3
 	fontColor 7 1
+	local len=${#1}
 	echo -n $1 | sed "s/_/ /g"
-
+	goto $2 $3	
+	sleep 3
 	defaultColor
+	for i in $(seq $len); do echo -n " "; done
 }

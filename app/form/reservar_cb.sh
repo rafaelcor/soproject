@@ -1,7 +1,7 @@
 #!/bin/bash
 
 function procesar_cb {
-	echo Procesando
+	#echo Procesando
 	fechaReserva=${txtValue[$(expr $txtI - 2)]}
 	horaInicio=${txtValue[$(expr $txtI - 1)]}
 	horaFin=${txtValue[$(expr $txtI)]}
@@ -17,14 +17,16 @@ function procesar_cb {
 				#ya lo usó una vez, ir a form pagos
 				#abrir form si no debe nada, sino pagar solo con efectivo
 				loadForm pagos
-				echo
+				#echo
 			fi
 		else
-			echo "dentroifelse"
+			errorMsg La_fecha_que_ingreso_ya_paso 30 20
+			firstText
 		fi
 		
 	else
-		echo "No"
+		errorMsg Datos_invalidos 30 20
+		firstText
 	fi
 	
 }
@@ -33,8 +35,7 @@ function cancelar_cb {
 	echo Cancelado
 }
 
-function volver_cb {
+function reingresarFecha_cb {
 	txtI=0 # Fix 0
 	firstText
-	firstButton
 }

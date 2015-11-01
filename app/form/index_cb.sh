@@ -13,7 +13,7 @@ function ingresar_cb {
 		if test $(checkCash $userName) -eq 1; then
 			loadForm logged
 		else
-			errorMsg Usted_debe_gastos_comunes 30 20			
+			errorMsg Usted_debe_gastos_comunes 30 20		
 			firstText
 		fi
 	else
