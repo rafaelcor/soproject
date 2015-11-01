@@ -9,3 +9,7 @@ function num++ {
 function num-- {
 	echo $(expr $1 - 1)
 }
+
+function abs {
+	echo $1 | sed 's/-//g'
+}
