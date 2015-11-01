@@ -9,8 +9,8 @@ textbox 5 7 42
 textbox 5 9 42
 
 button Procesar 13 15 procesar_cb
-button Cancelar 13 34 cancelar_cb
-
+button Volver_a_ingresar 13 28 reingresarFecha_cb
+button Cancelar 13 49 cancelar_cb
 
 firstText
 firstButton

@@ -1,7 +1,7 @@
 #!/bin/bash
 
 function procesar_cb {
-	echo Procesando
+	#echo Procesando
 	fechaReserva=${txtValue[$(expr $txtI - 2)]}
 	horaInicio=${txtValue[$(expr $txtI - 1)]}
 	horaFin=${txtValue[$(expr $txtI)]}
@@ -17,11 +17,15 @@ function procesar_cb {
 		fi
 		
 	else
-		echo "No"
+		firstText
 	fi
 	
 }
 
 function cancelar_cb {
 	echo Cancelado
+}
+
+function reingresarFecha_cb {
+	firstText
 }
