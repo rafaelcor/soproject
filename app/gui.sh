@@ -41,6 +41,10 @@ function button {
 	defaultColor
 }
 
+function label {
+	goto $2 $3
+	echo -n $1
+}
 
 # Define el color de los textbox
 function defTxtColor {
