@@ -155,3 +155,11 @@ function controlButton {
 	#echo FUNCIONA
 	${btnCb[$btnI]}
 }
+
+function errorMsg {
+	goto $2 $3
+	fontColor 7 1
+	echo -n $1 | sed "s/_/ /g"
+
+	defaultColor
+}
