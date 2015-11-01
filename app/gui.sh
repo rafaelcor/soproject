@@ -63,6 +63,8 @@ function textbox {
 # Carga un form
 function loadForm {
 	resetValues
+	defaultColor
+	clear
 	cat form/$1.form
 	source ./form/$1.sh
 	source ./form/$1_cb.sh
