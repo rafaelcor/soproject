@@ -15,7 +15,7 @@ function ingresar_cb {
 		clear
 		loadForm logged
 	else
-		echo
+		firstText
 		#if not correct
 		
 	fi
